@@ -6,8 +6,10 @@ import {AppActions} from "../types/actions";
 import MyTable from './MyTable';
 import {SharedBtn} from "./SharedBtn";
 import { bindActionCreators } from "redux";
-import {User} from "../../../CreateReactApp/my-app/src/types/User";
 import {fetchUsers} from "../actions/user";
+import ApplicationForm from "./ApplicationForm";
+import StatusCode from "./StatusCode";
+import Container from '@material-ui/core/Container';
 
 interface DashboardPageProps {
   id?: string;
@@ -26,7 +28,7 @@ export class Dashboard extends React.Component<Props, DashboardPageState> {
       emitEvent: this.props.fetchUsers
     }
 
-    const users: User[] = this.props.users;
+    const users: any[] = [];
 
     let userExist: boolean;
 
@@ -34,21 +36,24 @@ export class Dashboard extends React.Component<Props, DashboardPageState> {
 
     return (
       <div data-test="dashboard">
-        Dashboard
-        <SharedBtn {...configureBtn}/>
-        { userExist &&
-          users.map((user, index) => {
-          const { name, email } = user;
-          return <div>{name}</div>
-        })}
-        <MyTable/>
+        <Container fixed>
+          <ApplicationForm/>
+          <StatusCode/>
+          {/*<SharedBtn {...configureBtn}/>*/}
+          {/*{ userExist &&*/}
+            {/*users.map((user, index) => {*/}
+            {/*const { name, email } = user;*/}
+            {/*return <div>{name}</div>*/}
+          {/*})}*/}
+          <MyTable/>
+        </Container>
       </div>
     );
   }
 }
 
 interface LinkStateProps {
-  users: User[];
+
 }
 interface LinkDispatchProps {
   fetchUsers: () => void;

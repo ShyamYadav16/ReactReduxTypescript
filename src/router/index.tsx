@@ -12,9 +12,9 @@ const AppRouter = () => (
   <Router history={history}>
     <div>
       <Switch>
-        <Route path="/" exact component={HomePage} />
-        <Route path="/home" component={HomePage} />
-        <Route path="/dashboard" component={Dashboard} />
+        <Route path="/" exact component={Dashboard} />
+        {/*<Route path="/home" component={HomePage} />*/}
+        {/*<Route path="/dashboard" component={Dashboard} />*/}
       </Switch>
     </div>
   </Router>
